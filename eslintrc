@@ -1,0 +1,30 @@
+{
+    "extends": ["airbnb-base", "prettier", "plugin:react/recommended"],
+    "parser": "babel-eslint",
+     "parserOptions": {
+       "ecmaVersion": 2018,
+       "sourceType": "module"
+     },
+     "env": {
+       "browser": true,
+       "node": true,
+       "es6": true
+     },
+     "plugins": [],
+     "rules": {
+       "no-unused-vars": [
+         "error",
+         {
+           "vars": "local",
+           "args": "none"
+         }
+       ],
+       "no-plusplus": "off",
+       "import/no-named-as-default": 0,
+       "no-underscore-dangle": "off",
+       "global-require": 0,
+       "no-nested-ternary": "off",
+       "react/prop-types": 0
+    }
+   }
+   
