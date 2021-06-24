@@ -1,15 +1,17 @@
 import React from 'react';
-import {NativeRouter, Route, Switch} from 'react-router-dom';
-import App from '../App';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import App from '../components/app/App';
+import NotFound from '../common/pageNotFound/NotFound';
+import Header from '../components/header/Header';
 
-
-const Router = () => (
-  <NativeRouter>
+const Routes = () => (
+  <Router>
+      <Header />
     <Switch>
       <Route exact path="/" component={App} />
-      {/* <Route exact component={NotFound} /> */}
+      <Route exact component={NotFound} />
     </Switch>
-  </NativeRouter>
+  </Router>
 );
 
-export default Router;
+export default Routes;

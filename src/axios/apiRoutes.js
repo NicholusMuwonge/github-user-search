@@ -1,8 +1,8 @@
-import baseApiConfig from './Config';
+import baseApiConfig from './baseConfig';
 
 const Api = {
   users(data) {
-    return baseApiConfig.post(`/users?q=${data.query}&o=${data.order}&s=${data.sortParam}`, data);
+    return baseApiConfig.get(`/users?q=${data.query.strip()}&o=${data.order}&s=${data.sortParam}`);
   },
 };
 
