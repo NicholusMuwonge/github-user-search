@@ -1,9 +1,10 @@
 import searchUsersContants from '../../common/constants/constants';
 
-const setSuccessfulSearchResponseToState = (data) => (
+const setSuccessfulSearchResponseToState = (data, count) => (
   {
     type: searchUsersContants.SUCCESSFUL_SEARCH,
     payload: data,
+    count,
   }
 );
 

@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SearchBar = () => {
+const SearchBarComponent = ({ handleChange, handleSubmit }) => {
   const classes = useStyles();
   return (
     <div className={classes.search}>
@@ -84,9 +84,11 @@ const SearchBar = () => {
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
+              onChange={handleChange}
+              onKeyDown={handleSubmit}
             />
     </div>
   );
 };
 
-export default SearchBar;
+export default SearchBarComponent;

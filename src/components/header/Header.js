@@ -11,7 +11,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import SearchBar from '../searchBar/searchBar';
+import SearchBarContainer from '../searchBar/searchBarContainer';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -169,7 +169,7 @@ export default function Header() {
           <Typography className={classes.title} variant="h6" noWrap>
             Github
           </Typography>
-          <SearchBar />
+          <SearchBarContainer />
           <div className={classes.grow} />
         </Toolbar>
       </AppBar>

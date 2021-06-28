@@ -1,13 +1,24 @@
 import Api from '../../axios/apiRoutes';
 import { setSuccessfulSearchResponseToState } from './serachBarActions';
 
-const searchService = async (params, dispatch) => {
+let page = 1;
+const searchResults = [];
+const searchService = (params) => async (dispatch) => {
   try {
-    const response = await Api.users(params);
-    dispatch(setSuccessfulSearchResponseToState(response.data));
+    const response = await Api.users({
+      query: params, sortParam: '', order: 'desc', page,
+    });
+    // Github restricts to only 1000 results per search
+    searchResults.push(...response.data.items);
+    if (response.data.items.length === 100 && page < 10) {
+      page += 1;
+      dispatch(searchService(params));
+    } else {
+      dispatch(setSuccessfulSearchResponseToState(searchResults, response.data.total_count));
+    }
   } catch (error) {
-    if (!error.response.status) {
-      dispatch(setSuccessfulSearchResponseToState(error.response));
+    if (!error.response) {
+      dispatch(setSuccessfulSearchResponseToState(error));
     } else {
       dispatch(setSuccessfulSearchResponseToState(error.response));
     }
