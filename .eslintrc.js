@@ -34,5 +34,6 @@ module.exports = {
     'react/jsx-filename-extension': 0,
     'no-tabs': 0,
     'react/jsx-indent': 0,
+    'react/jsx-props-no-spreading': 'off'
   },
 };
