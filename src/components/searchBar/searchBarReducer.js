@@ -1,7 +1,8 @@
 import searchUsersContants from '../../common/constants/constants';
 
 const initialState = {
-  data: {},
+  currentQuery: '',
+  data: [],
   error: {},
   count: 0,
 };
@@ -11,8 +12,9 @@ const searchUsersReducer = (state = initialState, action) => {
     case searchUsersContants.SUCCESSFUL_SEARCH:
       return {
         ...state,
-        data: { ...action.payload },
+        data: action.payload,
         count: action.count,
+        currentQuery: action.query,
         error: {},
       };
     case searchUsersContants.FAILED_SEARCH:

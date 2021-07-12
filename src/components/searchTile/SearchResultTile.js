@@ -64,45 +64,45 @@ const styles = {
   },
 };
 
-function SearchResultTile() {
+function SearchResultTile({
+  name, nickName, avatar, biography, location, email, githubUrl,
+}) {
   return (
         <div style={styles.container}>
             <section style={styles.topSection}>
                 <div style={styles.itemContainer}>
                   <div style={styles.userIdentifierSection} />
                     <img
-                      src="https://avatars.githubusercontent.com/u/37922214?v=4"
+                      src={avatar}
                       alt="avatar"
                       width="30px"
                       height="30px"
                       style={{ borderRadius: '50%' }}
                     />
                     <br />
-                    <span style={styles.name}>firstName Hiace</span>
-                    {/* <span style={styles.name}>lastName</span> */}
-                    <span style={styles.nickName}>NickName</span>
+                    <span style={styles.name}>{name}</span>
+                    <span style={styles.nickName}>{nickName}</span>
                 </div>
                 <div style={styles.viewButtonContainer}>
                 <Button
                   variant="outlined"
-                  color="disabled"
                   style={styles.showMore}
                   endIcon={<GitHubIcon />}
                 >
-                  View On
+                  <a href={githubUrl} target="blank" style={{ textDecoration: 'none', color: 'black' }}>more</a>
                 </Button>
                 </div>
             </section>
             <section style={styles.topSection}>
                 <div style={styles.itemContainer}>
-                  <span style={styles.userBio}>This is the reader&lsquo;s Biography.</span>
+                  <span style={styles.userBio}>{biography}</span>
                 </div>
             </section>
             <section style={styles.topSection}>
               <div style={styles.itemContainer}>
                 <div style={styles.countrySection} />
-                  <span style={styles.name}>Location</span>
-                  <span style={styles.name}>email</span>
+                  <span style={styles.name}>{location}</span>
+                  <span style={styles.name}>{email}</span>
               </div>
             </section>
         </div>

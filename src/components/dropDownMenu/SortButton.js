@@ -62,7 +62,6 @@ export default function SortMenu() {
     <div>
       <Button
         variant="outlined"
-        color="disabled"
         style={styles.showMore}
         endIcon={<KeyboardArrowDownIcon />}
         onClick={(e) => handleClick(e)}

@@ -1,14 +1,15 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import SortMenu from '../dropDownMenu/SortButton';
 import './App.css';
-import SearchResultTile from './SearchResultTile';
+import SearchResultTileContainer from '../searchTile/SearchTileContainer';
+import PaginationOutlined from '../../common/pagination/Pagination';
+import SearchBanner from './NoticeBanner';
 
 const styles = {
   container: {
     padding: '1rem',
     backgroundColor: '#fafbfc',
-    // flex: 1,
-    // display: 'block',
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
@@ -30,18 +31,26 @@ const styles = {
   },
 };
 function AppComponent() {
+  const searchResults = useSelector((centralState) => centralState.searchUsersReducer);
   return (
     <div className="App" style={styles.container}>
       {/* This is the GitHub Search */}
       <section style={styles.sortBar}>
         <div style={styles.sortBarSubContainer}>
-          <span style={styles.resultsCount}>1000/ 43,923 search results</span>
+          <span style={styles.resultsCount}>
+            {searchResults.currentQuery && searchResults.count ? `${searchResults.currentQuery} results found.` : null}
+          </span>
         </div>
         <span style={styles.sortBarSubContainer}>
-          <SortMenu />
+          {searchResults.currentQuery && searchResults.count > 0 && <SortMenu />}
         </span>
       </section>
-      <SearchResultTile />
+      {searchResults.currentQuery ? <SearchResultTileContainer /> : <SearchBanner />}
+      {searchResults.currentQuery && searchResults.count < 1 && <SearchBanner text={`We couldn’t find any users matching ${searchResults.currentQuery}`} />}
+      <PaginationOutlined
+        query={searchResults?.currentQuery}
+        count={searchResults?.count}
+      />
     </div>
   );
 }

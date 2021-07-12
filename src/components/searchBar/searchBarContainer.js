@@ -8,7 +8,7 @@ const SearchBarContainer = () => {
   const dispatch = useDispatch();
   const handleSubmit = (e, query) => {
     if (e.key === 'Enter') {
-      dispatch(searchService(query.trim()));
+      dispatch(searchService({ query: query.trim(), page: null }));
     }
   };
   const handleChange = (event) => {
