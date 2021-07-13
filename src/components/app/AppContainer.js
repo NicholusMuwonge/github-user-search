@@ -3,7 +3,9 @@ import AppComponent from './App';
 
 function AppContainer() {
   return (
-    <AppComponent />
+    <>
+      <AppComponent />
+    </>
   );
 }
 

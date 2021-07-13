@@ -1,14 +1,17 @@
 // import axios from 'axios';
 import axios from 'axios';
 import Api from '../../axios/apiRoutes';
+import { startLoaderAction, stopLoaderAction } from '../../common/loader/LoaderAction';
 import { setSuccessfulSearchResponseToState } from './serachBarActions';
 
 const page = 1;
 const searchService = (params) => async (dispatch) => {
+  dispatch(startLoaderAction());
   try {
     const response = await Api.users({
       query: params.query, sortParam: '', order: 'desc', page: params.page ? params.page : page,
     });
+    dispatch(stopLoaderAction());
     // Github restricts to only 1000 results per search
     const userData = response.data.items;
     const allUrls = [];
@@ -27,6 +30,7 @@ const searchService = (params) => async (dispatch) => {
       dataToBeUpdated, response.data.total_count, params.query,
     ));
   } catch (error) {
+    dispatch(stopLoaderAction());
     if (!error.response) {
       dispatch(setSuccessfulSearchResponseToState(error));
     } else {
