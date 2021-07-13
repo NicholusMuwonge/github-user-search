@@ -33,8 +33,8 @@ export default function PaginationOutlined({ count, query }) {
   const dispatch = useDispatch();
   const [page, setPage] = React.useState(1);
   const handleChange = (event, value) => {
-    dispatch(searchService({ query: query.trim(), page: value }));
     setPage(value);
+    dispatch(searchService({ query: query.trim(), page: value }));
   };
   const styles = {
     chipStyle: {

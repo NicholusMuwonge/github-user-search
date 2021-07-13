@@ -55,13 +55,13 @@ function AppComponent() {
 <>
           {searchResults.currentQuery ? <SearchResultTileContainer /> : <SearchBanner />}
           {searchResults.currentQuery && searchResults.count < 1 && <SearchBanner text={`We couldn’t find any users matching ${searchResults.currentQuery}`} />}
-          <PaginationOutlined
-            query={searchResults?.currentQuery}
-            count={searchResults?.count}
-          />
 </>
           )
       }
+      <PaginationOutlined
+        query={searchResults?.currentQuery}
+        count={searchResults?.count}
+      />
     </div>
   );
 }
